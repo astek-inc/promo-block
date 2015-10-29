@@ -1,7 +1,7 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
   spree:
     promo_block: 'Promo Block'
     promo_blocks: 'Promo Blocks'
+    new_promo_block: 'New Promo Block'
+    edit_promo_block: 'Edit Promo Block'
+    promo_block_items: 'Promo Block Items'

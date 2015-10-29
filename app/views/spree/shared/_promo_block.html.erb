@@ -1,0 +1,18 @@
+<% unless @promo_block.nil? %>
+    <div class="row promo-block-front">
+      <div class="promo-front col-sm-4">
+        <div class="promo-item">
+          <%= link_to image_tag(@promo_block.promo_block_items[0].image.url(:small), :class => 'img-responsive'), @promo_block.promo_block_items[0].link %>
+        </div>
+        <div class="promo-item">
+          <%= link_to image_tag(@promo_block.promo_block_items[1].image.url(:small), :class => 'img-responsive'), @promo_block.promo_block_items[1].link %>
+        </div>
+      </div>
+      <div class="promo-front col-sm-3 promo-item">
+        <%= link_to image_tag(@promo_block.promo_block_items[2].image.url(:medium), :class => 'img-responsive'), @promo_block.promo_block_items[2].link %>
+      </div>
+      <div class="promo-front col-sm-5 promo-item customer-showcase">
+        <%= link_to image_tag(@promo_block.promo_block_items[3].image.url(:large), :class => 'img-responsive'), @promo_block.promo_block_items[3].link %>
+      </div>
+    </div>
+<% end %>

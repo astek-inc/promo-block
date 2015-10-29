@@ -1,1 +1,40 @@
-Index
+<% content_for :page_title do %>
+    <%= Spree.t(:promo_blocks) %>
+<% end %>
+
+<% content_for :page_actions do %>
+    <%= button_link_to Spree.t(:new_promo_block), new_admin_promo_block_url, {:class => "btn-success", :icon => 'add', :id => 'admin_new_promo_block'} %>
+<% end if can?(:create, Spree::PromoBlock) %>
+
+<% if @collection.any? %>
+    <table class="table" id="listing_promo_blocks">
+      <thead>
+      <tr data-hook="admin_promo_blocks_index_headers">
+        <th><%= Spree.t(:id) %></th>
+        <th><%= Spree.t(:name) %></th>
+        <th><%= Spree.t(:page_url) %></th>
+        <th><%= Spree.t(:active) %></th>
+        <th data-hook="admin_promo_blocks_index_header_actions" class="actions"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @collection.each do |promo_block| %>
+          <tr id="<%= spree_dom_id promo_block %>" data-hook="admin_promo_blocks_index_rows" class="<%= cycle('odd', 'even') %>">
+            <td class="id"><%= promo_block.id %></td>
+            <td class="name"><%= promo_block.name %></td>
+            <td class="page_url"><%= promo_block.page_url %></td>
+            <td class="status"><% if promo_block.active? %><span style="color: green;">✔</span><% else %><span style="color: red;">✘</span><% end %></td>
+            <td class="actions actions-3 text-right" data-hook="admin_promo_blocks_index_row_actions">
+              <%= link_to_edit promo_block, no_text: true, class: 'edit' if can?(:edit, promo_block) %>
+              <%= link_to_delete(promo_block, {url: spree.admin_promo_block_url(promo_block), no_text: true }) if can? :destroy, promo_block %>
+            </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% else %>
+    <div class="alert alert-info no-objects-found">
+      <%= Spree.t(:no_resource_found, resource: Spree.t(:promo_blocks)) %>.
+      <%= link_to Spree.t(:add_one), new_object_url %>!
+    </div>
+<% end %>

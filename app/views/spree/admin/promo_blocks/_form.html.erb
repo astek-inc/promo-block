@@ -1,0 +1,30 @@
+<style type="text/css">
+  .item-fields .field {
+      margin-bottom: 15px;
+  }
+</style>
+
+<div class="row">
+  <%= f.field_container :name, :class => ['col-md-5', 'col-xs-10'] do %>
+      <%= f.label :name, Spree.t(:name)%> <span class="required">*</span>
+      <%= f.text_field :name, :class => 'form-control', :required => true %>
+  <% end %>
+
+  <%= f.field_container :page_url, :class => ['col-md-5', 'col-xs-10'] do %>
+      <%= f.label :page_url, Spree.t(:page_url)%> <span class="required">*</span>
+      <%= f.text_field :page_url, :class => 'form-control', :required => true %>
+  <% end %>
+
+  <%= f.field_container :active, :class => ['col-md-2', 'col-xs-4'] do %>
+      <%= f.label :active, Spree.t(:active)%>
+      <%= f.check_box(:active) %>
+  <% end %>
+</div>
+
+<div class="row">
+  <h2 style="margin-left: 15px; font-size: 20px;"><%= Spree.t(:promo_block_items) %></h2>
+  <% @sizes = ['small', 'small', 'medium', 'large'] %>
+  <%= f.fields_for :promo_block_items do |item| %>
+      <%= render 'item_fields', {:f => f, :item => item}  %>
+  <% end %>
+</div>

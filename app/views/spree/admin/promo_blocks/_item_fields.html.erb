@@ -1,0 +1,20 @@
+<div class="col-md-3 item-fields">
+  <%= f.field_container :image do %>
+      <%= item.label :link, Spree.t(:image)%> <span class="required">*</span>
+      <div style="margin-bottom: 10px;">
+        <% unless @promo_block.promo_block_items[item.index].image_file_name.nil? %>
+            <%= image_tag @promo_block.promo_block_items[item.index].image.url(@sizes[item.index]), :style => 'height: 150px;' %>
+        <% end %>
+      </div>
+      <%= item.file_field :image, :class => 'form-control', :required => @promo_block.promo_block_items[item.index].image_file_name.nil? %>
+      <%= f.error_message_on :image %>
+  <% end %>
+
+  <%= f.field_container :link do %>
+      <%= item.label :link, Spree.t(:link)%> <span class="required">*</span>
+      <%= item.text_field :link, :class => 'form-control', :required => true %>
+      <%= f.error_message_on :link %>
+  <% end %>
+
+  <%= f.hidden_field :position, :value => item.index %>
+</div>
