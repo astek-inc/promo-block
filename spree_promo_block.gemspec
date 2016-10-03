@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_promo_block'
-  s.version     = '0.0.2'
+  s.version     = '0.0.3'
   s.summary     = 'Set of images and links'
   s.description = 'Set of images and links'
   s.required_ruby_version = '>= 2.0.0'
