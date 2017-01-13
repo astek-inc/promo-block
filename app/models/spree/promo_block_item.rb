@@ -7,7 +7,9 @@ module Spree
 
     belongs_to :promo_block
 
-    has_attached_file :image, styles: {large: '800x760!', medium: '475x780!', small: '800x460!'}
+    has_attached_file :image,
+      styles: {large: '800x760!', medium: '475x780!', small: '800x460!'},
+      convert_options: { all: '-colorspace sRGB -quality 70'}
     validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
     default_scope {order('position ASC')}
